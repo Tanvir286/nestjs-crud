@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entity/user.entity';
 import { ProductModule } from './product/product.module';
 import { Product } from './entity/product.entity';
+import { ImageModule } from './image/image.module';
 
 
 @Module({
@@ -20,7 +21,7 @@ import { Product } from './entity/product.entity';
       entities: [User,Product],
       synchronize: true,
     }), 
-    AuthModule, ProductModule
+    AuthModule, ProductModule, ImageModule
   ],
   controllers: [AppController],
   providers: [AppService],

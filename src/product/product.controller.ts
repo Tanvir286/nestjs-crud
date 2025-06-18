@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ProductService } from './product.service';
 import { JwtAuthGuard } from 'src/jwt-auth.guard';
@@ -21,7 +21,12 @@ export class ProductController {
    @ApiResponse({ status: 400, description: 'Bad Request.' })
    @ApiResponse({ status: 401, description: 'Unauthorized.' })
    @ApiResponse({ status: 500, description: 'Internal Server Error.' })
-   async createProduct(@Body() createProductDto: CreateProductDto) {
+   async createProduct(@Body() createProductDto: CreateProductDto, @Req() req) {
+
+
+     const userId = req.user.id; // ✅ পরিবর্তন এখানে: userId এর বদলে id ব্যবহার করুন
+  console.log('🟢 Logged-in user ID:', userId); // ✅ এখন সঠিক ID দেখাবে
+
        return this.productService.createProduct(createProductDto);
    }
    /*🚩<===============(Create Product End)===============>🚩*/
