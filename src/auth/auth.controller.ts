@@ -32,7 +32,7 @@ export class AuthController {
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
-  @ApiResponse({ status: 409, description: 'Conflict. User already exists.' })
+  @ApiResponse({ status: 409, description: 'Conflict. User already exist.' })
   @ApiResponse({ status: 404, description: 'Not Found.' })
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
